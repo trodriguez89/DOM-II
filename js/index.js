@@ -1,48 +1,41 @@
 // Your code goes here
-// * [X] `mouseover`
-// * [ ] `keydown`
-// * [ ] `wheel`
-// * [ ] `drag / drop`
-// * [X] `load`
-// * [ ] `focus`
-// * [X] `resize`
-// * [ ] `scroll`
-// * [ ] `select`
-// * [X] `dblclick`
+TweenMax.staggerTo(".intro img", 0.5, {
+    y: -40,
+    rotation: 10,
+    ease: Power1.easeInOut,
+    yoyo: true,
+    repeat: -1,
+    stagger: {
+      from: 5,
+      each: 0.1
+    }
+  }); 
+  const busImage = document.querySelector(".intro img");
+busImage.addEventListener("mouseover", function(){
+    busImage.style.transform = "scale(1.5)";
+    busImage.style.transition = "all 0.3s";
+});
+busImage.addEventListener("mouseleave", function(){
+    busImage.style.transform = "scale(1)";
+    busImage.style.transition = "all 0.3s";
+});
+const navh1 = document.querySelector("h1");
+window.addEventListener("resize", function() {
+    navh1.style.fontSize = "6rem";
+    navh1.style.color = "purple";
+})
 
-// Using the 10 unique events, find ways to update the DOM in creative ways. For example you could change colors, animate objects, remove objects, etc.
+window.addEventListener("load", function(){
+    alert("CONGRATS! YOU'VE WON A PRIZE! CLICK TO REDEEM!")
+})
 
-// * [] Nest two similar events somewhere in the site and prevent the event propagation properly
-// * [X] Stop the navigation from items from refreshing the page by using `preventDefault()`
-
-
-// const busImage = document.querySelector("header img");
-// busImage.addEventListener("mouseover", function(){
-//     busImage.style.transform = "scale(1.5)"
-//     busImage.style.transition = "all 0.3s"
-// })
-// busImage.addEventListener("mouseleave", function(){
-//     busImage.style.transform = "scale(1)"
-//     busImage.style.transition = "all 0.3s"
-// })
-// const navh1 = document.querySelector("h1");
-// window.addEventListener("resize", function() {
-//     navh1.style.fontSize = "6rem";
-//     navh1.style.color = "purple";
-// })
-
-// window.addEventListener("load", function(){
-//     alert("The page is now loaded!")
-// })
-
-
-// const links = document.querySelectorAll(".nav-container a")
-// links.forEach(function (link){
-//     link.addEventListener("click", function(event){
-//         console.log("I stopped the link");
-//         event.stopPropagation();
-//     })
-// })
+const links = document.querySelectorAll(".nav-container a")
+links.forEach(function (link){
+    link.addEventListener("click", function(event){
+        console.log("I stopped the link");
+        event.preventDefault();
+    })
+})
 
 const letsGoImg = document.querySelector(".img-content img");
 letsGoImg.addEventListener("dblclick", function() {
@@ -54,12 +47,45 @@ allLowerImg[1].addEventListener("wheel", function() {
     allLowerImg[1].style.opacity = ".5";
 })
 
-// const footerImage = document.querySelector(".content-destination img")
-// footerImage.addEventListener("keypress", function() {
-//     footerImage.style.opacity = ".5";
-// })
+const footerImage = document.querySelector(".content-destination img")
+footerImage.addEventListener("click", function() {
+    footerImage.style.transform = "scale(1.5)";
+    footerImage.style.transition = "all 0.3s";
+    footerImage.style.opacity = ".5";
+})
 
+const pTag = document.querySelector("p");
+pTag.addEventListener("drag", function(){
+    pTag.style.fontSize = "5rem";
+    pTag.style.color = "purple";
+    pTag.style.border = "2px solid black"
+})
 
+const adventureText = document.querySelectorAll(".text-content p");
+adventureText[2].addEventListener("copy", function(){
+    alert("Stop copying my work!");
+})
 
+const buttonText = document.querySelectorAll(".destination");
+buttonText.forEach(function(text){
+    text.addEventListener("click", function(){
+        text.style.backgroundColor = "red";
+    })
+})
+
+const buttons = document.querySelectorAll(".destination .btn");
+buttons.forEach(function(button){
+    button.addEventListener("click", function(event){
+        button.style.border = "2px solid purple"
+        event.stopPropagation();
+    })
+})
+
+window.addEventListener("keydown", checkKeyPress, false);
+function checkKeyPress(key){
+    if (key.keyCode == "65"){
+        alert("You pressed the correct key!")
+    }
+}
 
 
